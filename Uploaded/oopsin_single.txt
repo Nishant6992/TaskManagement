@@ -1,0 +1,179 @@
+//interface
+
+interface IAnimal
+{
+    void animalSound(); 
+}
+
+class Pig : IAnimal
+{
+    public void animalSound()
+    {
+        
+        Console.WriteLine("The pig says: wee wee");
+    }
+}
+// constructor
+class Program
+{
+    static void Main(string[] args)
+    {
+        Pig myPig = new Pig();
+        myPig.animalSound();
+    }
+}
+public class ParentClass {
+    public ParentClass() {
+        Console.WriteLine("Parent Constructor.");
+    }
+    public void print() {
+        Console.WriteLine("I'm a Parent Class.");
+    }
+}
+public class ChildClass: ParentClass {
+    public ChildClass() {
+        Console.WriteLine("Child Constructor.");
+    }
+    public static void Main() {
+        ChildClass child = new ChildClass();
+        child.print();
+    }
+}
+// Exception Handling
+// Exception handling of above code
+// using try catch blocks
+
+using System;
+
+class Program : System.Exception {
+	static void Main(string[] args)
+	{
+		// Declare an array of max index 4
+		int[] arr = { 1, 2, 3, 4, 5 };
+
+		// Display values of array elements
+		for (int i = 0; i < arr.Length; i++) {
+			Console.WriteLine(arr[i]);
+		}
+
+		try {
+
+			// Try to access invalid index of array
+			Console.WriteLine(arr[7]);
+			// An exception is thrown upon executing
+			// the above line
+		}
+		catch (IndexOutOfRangeException e) {
+
+			// The Message property of the object 
+			// of type IndexOutOfRangeException
+			// is used to display the type of exception
+			// that has occurred to the user.
+			Console.WriteLine("An Exception has occurred : {0}", e.Message);
+		}
+	}
+}
+// using finally keyword
+// C# program illustrate the finally 
+// block with unhandled exception 
+using System; 
+
+public class GFG { 
+	
+	// Main method 
+	static public void Main () { 
+		
+	
+	int number = 4; 
+	int divisor = 0; 
+	int output;	 
+	try
+	{ 
+		output = number/divisor;	 
+	} 
+	
+	// finally block, this block always executes 
+	finally
+	{ 
+		Console.WriteLine("Finally Block!"); 
+	} 
+	} 
+} 
+// string in c#
+using System;
+class Geeks {
+
+	// Main Method
+	static void Main(string[] args)
+	{
+
+		
+		System.String Name;
+		Name = "Geek";
+		String id;
+		
+		// initialization of String
+		id = "33";
+
+		// declare a string mrk using 
+		// string keyword
+		string mrk;
+		
+		// initialization of String
+		mrk = "97";
+		
+		// Declaration and initialization of
+		// the string in a single line
+		string rank = "1";
+
+		// Displaying Result
+		Console.WriteLine("Name: {0}", Name);
+		Console.WriteLine("Id: {0}", id);
+		Console.WriteLine("Marks: {0}", mrk);
+		Console.WriteLine("Rank: {0}", rank);
+	}
+}
+// delegates in c#
+// C# program to illustrate the use of Delegates
+using System;
+namespace DELEgate {
+	
+
+class delegatE {
+	
+public delegate void addnum(int a, int b);
+public delegate void subnum(int a, int b);
+	
+	
+	public void sum(int a, int b)
+	{
+		Console.WriteLine("(100 + 40) = {0}", a + b);
+	}
+	public void subtract(int a, int b)
+	{
+		Console.WriteLine("(100 - 60) = {0}", a - b);
+	}
+
+public static void Main(String []args)
+{
+	
+	
+	Geeks obj = new Geeks();
+
+	
+	addnum del_obj1 = new addnum(obj.sum);
+	subnum del_obj2 = new subnum(obj.subtract);
+
+	del_obj1(100, 40);
+	del_obj2(100, 60);
+			/*
+			 * A delegate is a type that represents references to methods with a particular parameter list and return type.
+			 * When you instantiate a delegate, you can associate its instance with any method with a compatible signature and return type. 
+			 * You can invoke (or call) the method through the delegate instance.
+	// These can be written as using
+	// "Invoke" method
+	// del_obj1.Invoke(100, 40);
+	// del_obj2.Invoke(100, 60);
+}
+}
+}
