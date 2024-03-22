@@ -13,7 +13,7 @@
             <h2>Project List</h2>
             <hr />
 
-            <asp:Repeater ID="rptProjects" runat="server" OnItemCommand="rptProjects_ItemCommand">
+            <asp:Repeater ID="rptProjects" runat="server">
                 <ItemTemplate>
                     <div class="card mb-3">
                         <div class="card-header">
@@ -26,7 +26,7 @@
                             <p><strong>Employee ID:</strong> <%# Eval("Employee_id") %></p>
                         </div>
                         <div class="card-footer">
-                            <asp:Button ID="btnEdit" runat="server" CommandName="Edit" CommandArgument='<%# Eval("Project_id") %>' Text="Edit" CssClass="btn btn-primary mr-2" />
+                            <asp:Button ID="btnEdit" runat="server" CommandName="Edit" CommandArgument='<%# Eval("Project_id") %>' Text="Edit" CssClass="btn btn-primary mr-2" OnClick="btnEdit_Click" />
                             <asp:Button ID="btnDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("Project_id") %>' Text="Delete" CssClass="btn btn-danger" />
                         </div>
                     </div>

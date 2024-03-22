@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateProject.aspx.cs" Inherits="TaskManagement.CreateProject" %>
 
 <!DOCTYPE html>
+<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">

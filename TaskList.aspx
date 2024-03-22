@@ -55,8 +55,10 @@
                                     <strong>Project Name:</strong> <%# Eval("projectname") %>
                                 </div>
                                 <div class="task-buttons">
-                                    <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary btn-sm" />
-                                    <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger btn-sm" />
+                                    <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary btn-sm" CommandName="Edit" CommandArgument='<%# Eval("TaskID") %>' OnClick="btnEdit_Click" />
+
+                                    <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger btn-sm" CommandName="Delete" CommandArgument='<%# Eval("TaskID") %>' OnClick="btnDelete_Click" />
+
                                 </div>
                             </div>
                         </div>

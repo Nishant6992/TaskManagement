@@ -28,11 +28,12 @@ namespace TaskManagement
             e1.address = address.Text;
             e1.age = age.Text;
             e1.emailid = emailid.Text;
-            e1.gender = gender.Text;
+            e1.gender = gender.SelectedValue;
             e1.Name = txtname.Text;
             e1.state = state.Text;
             e1.number = mobilenumber.Text;
             e1.password = password.Text;
+            e1.confirmpassword = confirmpassword.Text;
             e1.role = ddlRole.SelectedValue;
             businesslogic b1 = new businesslogic();
             b1.userclick(e1);

@@ -1,10 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="TaskManagement.Index" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <title>Task Management Sign up</title>
     <style>
         body {
@@ -15,8 +14,6 @@
         }
 
         form {
-            width: 300px;
-            margin: 50px auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -34,70 +31,98 @@
                 margin-bottom: 5px;
                 font-weight: bold;
             }
-
-            form input[type="text"],
-            form input[type="password"] {
-                width: calc(100% - 12px);
-                padding: 6px;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-            }
-
-            form input[type="button"] {
-                width: 100%;
-                padding: 10px;
-                background-color: #3366FF;
-                border: 1px solid #3366FF;
-                border-radius: 4px;
-                color: #fff;
-                font-weight: bold;
-                cursor: pointer;
-            }
-
-                form input[type="button"]:hover {
-                    background-color: #0056b3;
-                    border-color: #0056b3;
-                }
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <center>Registration</center>
-        <label for="txtname">Name</label>
-        <asp:TextBox ID="txtname" runat="server"></asp:TextBox>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-8">
+                <form id="form1" runat="server">
+                    <center>Registration</center>
+                    <div class="form-group">
+                        <label for="txtname">Name</label>
+                        <asp:TextBox ID="txtname" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <asp:DropDownList ID="gender" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="--Select--" Value=""></asp:ListItem>
+                            <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
+                            <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
+                            <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
 
-        <label for="gender">Gender</label>
-        <asp:TextBox ID="gender" runat="server"></asp:TextBox>
-
-        <label for="emailid">Email ID</label>
-        <asp:TextBox ID="emailid" runat="server"></asp:TextBox>
-
-        <label for="state">State</label>
-        <asp:TextBox ID="state" runat="server"></asp:TextBox>
-
-        <label for="mobilenumber">Mobile Number</label>
-        <asp:TextBox ID="mobilenumber" runat="server"></asp:TextBox>
-
-        <label for="age">Age</label>
-        <asp:TextBox ID="age" runat="server"></asp:TextBox>
-
-        <label for="address">Address</label>
-        <asp:TextBox ID="address" runat="server"></asp:TextBox>
-
-        <label for="password">Password</label>
-        <asp:TextBox ID="password" runat="server" TextMode="Password"></asp:TextBox>
-
-
-      <label for="ddlRole">Role</label>
-        <asp:DropDownList ID="ddlRole" Width="150px" runat="server" EnableViewState="true">
-            <asp:ListItem Text="User" value="User" />
-            <asp:ListItem Text="Admin" Value="Admin" />
-        </asp:DropDownList>
-
-        <br />
-        <br />
-        <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Submit" />
-    </form>
+                    <div class="form-group">
+                        <label for="emailid">Email ID</label>
+                        <asp:TextBox ID="emailid" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <asp:TextBox ID="state" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobilenumber">Mobile Number</label>
+                        <asp:TextBox ID="mobilenumber" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <asp:TextBox ID="age" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <asp:TextBox ID="address" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <asp:TextBox ID="password" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpassword">Confirm Password</label>
+                        <asp:TextBox ID="confirmpassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="ddlRole">Role</label>
+                        <asp:DropDownList ID="ddlRole" runat="server" CssClass="form-control">
+                            <asp:ListItem Text="--Select--" Value=""></asp:ListItem>
+                            <asp:ListItem Text="User" Value="User" />
+                            <asp:ListItem Text="Admin" Value="Admin" />
+                        </asp:DropDownList>
+                    </div>
+                    <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Submit" CssClass="btn btn-primary" OnClientClick="return validatePasswordAndGender();" />
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+<script>
+    function validatePasswordAndGender() {
+        var password = document.getElementById('<%= password.ClientID %>').value;
+        var confirmPassword = document.getElementById('<%= confirmpassword.ClientID %>').value;
+        var gender = document.getElementById('<%= gender.ClientID %>').value;
+
+
+        if (gender === "") {
+            alert("Please select your gender");
+            return false;
+        }
+
+
+        if (password.length < 8) {
+            alert("Password must be at least 8 characters long");
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return false;
+        }
+
+
+
+        return true;
+    }
+</script>
+
+
 </html>
