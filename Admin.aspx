@@ -5,6 +5,7 @@
 <head runat="server">
     <title>Task Management System</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,7 +25,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="TaskList.aspx" Text="Task List" CssClass="dropdown-item" />
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="TaskList.aspx" Text="Task List" CssClass="dropdown-item" />
                                 <asp:HyperLink ID="CreateTaskLink" runat="server" NavigateUrl="CreateTask.aspx" Text="Create Task" CssClass="dropdown-item" />
                                 <asp:HyperLink ID="DeleteTaskLink" runat="server" NavigateUrl="DeleteTask.aspx" Text="Delete Task" CssClass="dropdown-item" />
                                 <asp:HyperLink ID="CreateProjectLink" runat="server" NavigateUrl="CreateProject.aspx" Text="Create Project" CssClass="dropdown-item" />
@@ -60,16 +61,16 @@
                                 </HeaderTemplate>
 
                                 <ItemTemplate>
-                                     <div class="card mb-3">
-                                    <li class="list-group-item">
-                                        
+                                    <div class="card mb-3">
+                                        <li class="list-group-item">
+
                                             <b>Project ID:</b> <%# Eval("Project_id") %><br />
                                             <b>Project Name:</b> <%# Eval("projectname") %><br />
                                             <b>Start Date:</b> <%# Eval("project_startDate") %><br />
                                             <b>End Date:</b> <%# Eval("project_endDate") %><br />
                                             <b>Description:</b> <%# Eval("project_Description") %><br />
-                                         
-                                    </li>
+
+                                        </li>
                                     </div>
                                 </ItemTemplate>
                                 <FooterTemplate>
@@ -96,17 +97,135 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="forwardTaskModal" tabindex="-1" aria-labelledby="forwardTaskModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="forwardTaskModalLabel">Forward Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="ddlProject">Select Project:</label>
+                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged">
+                                <asp:ListItem Text="Choose Project" Value="" />
+                            </asp:DropDownList>
+                        </div>
 
-        <footer class="footer fixed-bottom bg-dark text-white text-center py-3">
+                        <div class="form-group">
+                            <%--<asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?" OnClientClick="showOrHideTaskFields()" />--%>
+                            <asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?"  />
+                        </div>
+                        <div id="taskFields" style="display: none;">
+                            <div class="form-group">
+                                <label for="txtTaskName">Task Name:</label>
+                                <asp:TextBox ID="txtTaskName" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label for="ddlTaskPriority">Task Priority:</label>
+                                <asp:DropDownList ID="ddlTaskPriority" runat="server" CssClass="form-control">
+                                    <asp:ListItem Text="Select Priority" Value="" />
+                                    <asp:ListItem Text="Low" Value="Low" />
+                                    <asp:ListItem Text="Medium" Value="Medium" />
+                                    <asp:ListItem Text="High" Value="High" />
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ddlEmployee">Select Employee:</label>
+                            <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged">
+                                <asp:ListItem Text="Choose Employee" Value="" />
+                            </asp:DropDownList>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtComments">Comments:</label>
+                            <textarea class="form-control" id="txtComments" rows="3" placeholder="Enter comments" runat="server"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="fileUpload">Upload File:</label>
+                            <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnForwardTask">Forward Task</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer fixed-bottom bg-dark text-white text-center py-3" style="margin-top: 3000px">
             Project:
             <asp:Label ID="lblProjectName" runat="server" ClientIDMode="Static"></asp:Label>
-            <asp:Button ID="btnForward" runat="server" Text="Forward" CssClass="btn btn-primary ml-2" OnClick="btnForward_Click" />
+            <asp:Button ID="btnForward" runat="server" Text="Forward" CssClass="btn btn-primary ml-2" OnClick="btnForward_Click" OnClientClick="openForwardTaskModal(); return false;" />
             <asp:Button ID="btnAttachment" runat="server" Text="Attachment" CssClass="btn btn-secondary" OnClick="btnAttachment_Click" />
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+
+            $("#chkAddTask").click(function () {
+            
+
+            
+                debugger;
+                var taskFields = document.getElementById('taskFields');
+                var priorityFields = document.getElementById('priorityFields');
+                
+                var chkAddTask = document.getElementById('<%= chkAddTask.ClientID %>');
+
+                 // Toggle the display of additional fields based on the checkbox state
+                 if (chkAddTask.checked) {
+                     taskFields.style.display = 'block';
+                     priorityFields.style.display = 'block';
+                 } else {
+                     taskFields.style.display = 'none';
+                     priorityFields.style.display = 'none';
+                 }
+            })
+
+
+
+            function openForwardTaskModal() {
+                // Open the modal
+                $('#forwardTaskModal').modal('show');
+            }
+
+            $(document).ready(function () {
+
+                $('#btnForwardTask').click(function () {
+                    var employeeID = $('#txtEmployeeID').val();
+                    var comments = $('#txtComments').val();
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "Admin.aspx/ForwardTask", // Update the URL according to your setup
+                        data: JSON.stringify({ employeeID: employeeID, comments: comments }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            // Handle success response
+                            alert("Task forwarded successfully.");
+                            $('#forwardTaskModal').modal('hide');
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            // Handle error response
+                            console.error("Error: " + textStatus);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        
     </form>
 </body>
 </html>

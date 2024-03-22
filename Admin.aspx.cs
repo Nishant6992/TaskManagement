@@ -3,6 +3,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.UI;
+using DAL;
+using BAL;
+using Entity;
+using System.Web.UI.WebControls;
 
 namespace TaskManagement
 {
@@ -12,11 +16,20 @@ namespace TaskManagement
         {
             if (!IsPostBack)
             {
+                PopulateProjectDropDown();
                 string userName = "Admin";
                 lblUserName.Text = userName;
                 //FetchUserTasks();
                 //FetchProjects(); // Call to fetch projects when page loads
             }
+        }
+
+  
+        private void PopulateProjectDropDown()
+        {
+            businesslogic b1 = new businesslogic();
+            ddlProject.Items.Add(b1.Add());
+          
         }
 
         protected string GetPriorityColor(object priority)
@@ -103,6 +116,7 @@ namespace TaskManagement
         {
             try
             {
+
                 int employeeID = Convert.ToInt32(txtEmployeeID.Text);
 
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
@@ -156,14 +170,33 @@ namespace TaskManagement
             FetchProjects();
         }
 
-        protected void btnForward_Click(object sender, EventArgs e)
-        {
-            // Handle button click event
-        }
-
+       
         protected void btnAttachment_Click(object sender, EventArgs e)
         {
-            // Handle button click event
+            
         }
+
+        protected void btnForwardTask_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void btnForward_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlProject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
