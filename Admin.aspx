@@ -110,18 +110,18 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="ddlProject">Select Project:</label>
-                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control" AutoPostBack="false" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged" placeholder="Choose Project">
                                 <asp:ListItem Text="Choose Project" Value="" />
                             </asp:DropDownList>
                         </div>
 
                         <div class="form-group">
                             <%--<asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?" OnClientClick="showOrHideTaskFields()" />--%>
-                            <asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?"  />
+                            <asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?" />
                         </div>
                         <div id="taskFields" style="display: none;">
                             <div class="form-group">
-                                <label for="txtTaskName">Task Name:</label>
+                                <asp:Label for="txtTaskName" runat="server">Task Name:</asp:Label>
                                 <asp:TextBox ID="txtTaskName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                             <div class="form-group">
@@ -133,6 +133,19 @@
                                     <asp:ListItem Text="High" Value="High" />
                                 </asp:DropDownList>
                             </div>
+                            <div class="form-group">
+                                <label for="txtTaskStartDate">Task Start Date:</label>
+                                <asp:TextBox ID="txtTaskStartDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTaskEndDate">Task End Date:</label>
+                                <asp:TextBox ID="txtTaskEndDate" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTaskDescription">Task Description:</label>
+                                <textarea id="txtTaskDescription" class="form-control" rows="3"></textarea>
+                            </div>
+
                         </div>
 
                         <div class="form-group">
@@ -151,7 +164,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnForwardTask">Forward Task</button>
+                        <button type="button" class="btn btn-primary" id="btnForwardTask" onclick="forwardbutton();">Forward Task</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -169,63 +182,74 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <script>
+       <script>
 
-            $("#chkAddTask").click(function () {
-            
+           $("#chkAddTask").click(function () {
 
-            
-                debugger;
-                var taskFields = document.getElementById('taskFields');
-                var priorityFields = document.getElementById('priorityFields');
-                
-                var chkAddTask = document.getElementById('<%= chkAddTask.ClientID %>');
 
-                 // Toggle the display of additional fields based on the checkbox state
-                 if (chkAddTask.checked) {
-                     taskFields.style.display = 'block';
-                     priorityFields.style.display = 'block';
-                 } else {
-                     taskFields.style.display = 'none';
-                     priorityFields.style.display = 'none';
-                 }
+
+               debugger;
+               var taskFields = document.getElementById('taskFields');
+               var priorityFields = document.getElementById('priorityFields');
+
+               var chkAddTask = document.getElementById('<%= chkAddTask.ClientID %>');
+
+                // Toggle the display of additional fields based on the checkbox state
+                if (chkAddTask.checked) {
+                    taskFields.style.display = 'block';
+                    priorityFields.style.display = 'block';
+                } else {
+                    taskFields.style.display = 'none';
+                    priorityFields.style.display = 'none';
+                }
             })
 
 
 
-            function openForwardTaskModal() {
-                // Open the modal
-                $('#forwardTaskModal').modal('show');
-            }
+           function openForwardTaskModal() {
+               // Open the modal
+               $('#forwardTaskModal').modal('show');
+           }
 
-            $(document).ready(function () {
+           function forwardbutton() {
+               if ($('#txtEmployeeID').val()=='') {
+                   alert("Fields are missing");
+                   return false;
+               }
 
-                $('#btnForwardTask').click(function () {
-                    var employeeID = $('#txtEmployeeID').val();
-                    var comments = $('#txtComments').val();
+               $('#forwardTaskModal').modal('hide');
+           }
 
 
-                    $.ajax({
-                        type: "POST",
-                        url: "Admin.aspx/ForwardTask", // Update the URL according to your setup
-                        data: JSON.stringify({ employeeID: employeeID, comments: comments }),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function (response) {
-                            // Handle success response
-                            alert("Task forwarded successfully.");
-                            $('#forwardTaskModal').modal('hide');
-                        },
-                        error: function (xhr, textStatus, errorThrown) {
-                            // Handle error response
-                            console.error("Error: " + textStatus);
-                        }
-                    });
-                });
-            });
-        </script>
+           $(document).ready(function () {
 
-        
+               $('#btnForwardTask').click(function () {
+                   var employeeID = $('#txtEmployeeID').val();
+                   var comments = $('#txtComments').val();
+
+
+                   $.ajax({
+                       type: "POST",
+                       url: "Admin.aspx/ForwardTask", // Update the URL according to your setup
+                       data: JSON.stringify({ employeeID: employeeID, comments: comments }),
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: function (response) {
+                           // Handle success response
+                           alert("Task forwarded successfully.");
+                           $('#forwardTaskModal').modal('hide');
+                       },
+                       error: function (xhr, textStatus, errorThrown) {
+                           // Handle error response
+                           console.error("Error: " + textStatus);
+                       }
+                   });
+               });
+           });
+       </script>
+
+
+
     </form>
 </body>
 </html>

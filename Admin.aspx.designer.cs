@@ -159,6 +159,24 @@ namespace TaskManagement
         protected global::System.Web.UI.WebControls.DropDownList ddlTaskPriority;
 
         /// <summary>
+        /// txtTaskStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTaskStartDate;
+
+        /// <summary>
+        /// txtTaskEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTaskEndDate;
+
+        /// <summary>
         /// ddlEmployee control.
         /// </summary>
         /// <remarks>

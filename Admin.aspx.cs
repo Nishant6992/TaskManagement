@@ -7,6 +7,7 @@ using DAL;
 using BAL;
 using Entity;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 namespace TaskManagement
 {
@@ -27,9 +28,10 @@ namespace TaskManagement
   
         private void PopulateProjectDropDown()
         {
-            businesslogic b1 = new businesslogic();
-            ddlProject.Items.Add(b1.Add());
-          
+            List<string> projects = businesslogic.Add();
+           
+            ddlProject.DataSource = projects;
+            ddlProject.DataBind();
         }
 
         protected string GetPriorityColor(object priority)
@@ -183,7 +185,7 @@ namespace TaskManagement
 
         protected void btnForward_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void ddlProject_SelectedIndexChanged(object sender, EventArgs e)
