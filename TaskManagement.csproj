@@ -88,6 +88,7 @@
     <Content Include="DeleteTask.aspx" />
     <Content Include="EditProject.aspx" />
     <Content Include="EditTask.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="IncorrectCredentials.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="EditTask.aspx.designer.cs">
       <DependentUpon>EditTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="IncorrectCredentials.aspx.cs">
       <DependentUpon>IncorrectCredentials.aspx</DependentUpon>

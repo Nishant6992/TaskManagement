@@ -14,18 +14,58 @@ namespace TaskManagement
     public partial class UserUI : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+            {
             if (!IsPostBack)
             {
                 PopulateProjectDropDown();
+                PopulateEmpDropDown();
                 string userName = "Admin";
                 lblUserName.Text = userName;
                 //FetchUserTasks();
                 //FetchProjects(); // Call to fetch projects when page loads
             }
         }
+        [System.Web.Services.WebMethod]
+        public static List<string> GetEmployeesByProject(string projectName)
+        {
+            List<string> employeeNames = new List<string>();
 
-  
+            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("FetchEmp", con)) 
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@projectname", projectName);
+
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        employeeNames.Add("--Select Employee--"); 
+                        while (reader.Read())
+                        {
+                            employeeNames.Add(reader["FullName"].ToString());
+                        }
+                    }
+                }
+            }
+
+            return employeeNames;
+        }
+        private void PopulateEmpDropDown()
+        {
+
+            string projectName = ddlProject.SelectedValue;
+            List<string> empName = businesslogic.AddEmp(projectName);
+
+            ddlEmployee.DataSource = empName;
+            ddlEmployee.DataBind();
+        }
+
         private void PopulateProjectDropDown()
         {
             List<string> projects = businesslogic.Add();
@@ -191,11 +231,17 @@ namespace TaskManagement
         protected void ddlProject_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            string projectName = ddlProject.SelectedValue;
+            List<string> empName = businesslogic.AddEmp(projectName);
+
+            ddlEmployee.DataSource = empName;
+            ddlEmployee.DataBind();
 
         }
 
         protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
+
 
         }
 

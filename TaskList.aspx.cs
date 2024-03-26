@@ -25,7 +25,7 @@ namespace TaskManagement
             {
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
                 {
-                    using (SqlCommand cmd = new SqlCommand("SELECT *FROM [dbo].[task] WHERE [isDeleted] IS NULL", con))
+                    using (SqlCommand cmd = new SqlCommand("SELECT *FROM [dbo].[task] WHERE [isDeleted]=0", con))
                     {
                         con.Open();
                         SqlDataAdapter da = new SqlDataAdapter(cmd);

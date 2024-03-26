@@ -1,12 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="TaskManagement.UserUI" %>
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head runat="server">
     <title>Task Management System</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-
-</head>
+ </head>
 <body>
     <form id="form1" runat="server">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,8 +37,7 @@
                 </div>
             </div>
         </nav>
-
-        <div class="container mt-5">
+         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
@@ -59,18 +56,15 @@
                                 <HeaderTemplate>
                                     <ul class="list-group">
                                 </HeaderTemplate>
-
-                                <ItemTemplate>
+                                 <ItemTemplate>
                                     <div class="card mb-3">
                                         <li class="list-group-item">
-
-                                            <b>Project ID:</b> <%# Eval("Project_id") %><br />
+                                             <b>Project ID:</b> <%# Eval("Project_id") %><br />
                                             <b>Project Name:</b> <%# Eval("projectname") %><br />
                                             <b>Start Date:</b> <%# Eval("project_startDate") %><br />
                                             <b>End Date:</b> <%# Eval("project_endDate") %><br />
                                             <b>Description:</b> <%# Eval("project_Description") %><br />
-
-                                        </li>
+                                         </li>
                                     </div>
                                 </ItemTemplate>
                                 <FooterTemplate>
@@ -110,12 +104,11 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="ddlProject">Select Project:</label>
-                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control" AutoPostBack="false" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged" placeholder="Choose Project">
-                                <asp:ListItem Text="Choose Project" Value="" />
+                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control" AutoPostBack="false" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged">
+                                <%-- <asp:ListItem Text="Choose Project" Value="" />--%>
                             </asp:DropDownList>
                         </div>
-
-                        <div class="form-group">
+                         <div class="form-group">
                             <%--<asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?" OnClientClick="showOrHideTaskFields()" />--%>
                             <asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?" />
                         </div>
@@ -145,13 +138,10 @@
                                 <label for="txtTaskDescription">Task Description:</label>
                                 <textarea id="txtTaskDescription" class="form-control" rows="3"></textarea>
                             </div>
-
-                        </div>
-
-                        <div class="form-group">
+                         </div>
+                         <div class="form-group">
                             <label for="ddlEmployee">Select Employee:</label>
                             <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged">
-                                <asp:ListItem Text="Choose Employee" Value="" />
                             </asp:DropDownList>
                         </div>
                         <div class="form-group">
@@ -170,86 +160,142 @@
                 </div>
             </div>
         </div>
-
-        <footer class="footer fixed-bottom bg-dark text-white text-center py-3" style="margin-top: 3000px">
+         <footer class="footer fixed-bottom bg-dark text-white text-center py-3" style="margin-top: 3000px">
             Project:
             <asp:Label ID="lblProjectName" runat="server" ClientIDMode="Static"></asp:Label>
-            <asp:Button ID="btnForward" runat="server" Text="Forward" CssClass="btn btn-primary ml-2" OnClick="btnForward_Click" OnClientClick="openForwardTaskModal(); return false;" />
+            <asp:Button ID="btnForward" runat="server" Text="Forward" CssClass="btn btn-primary ml-2" OnClientClick="openForwardTaskModal(); return false;" />
             <asp:Button ID="btnAttachment" runat="server" Text="Attachment" CssClass="btn btn-secondary" OnClick="btnAttachment_Click" />
         </footer>
-
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-       <script>
-
-           $("#chkAddTask").click(function () {
-
-
-
-               debugger;
-               var taskFields = document.getElementById('taskFields');
-               var priorityFields = document.getElementById('priorityFields');
-
-               var chkAddTask = document.getElementById('<%= chkAddTask.ClientID %>');
-
-                // Toggle the display of additional fields based on the checkbox state
+   <script>
+       $("#chkAddTask").click(function () {
+           var taskFields = document.getElementById('taskFields');
+           var chkAddTask = document.getElementById("chkAddTask");
+                 // Toggle the display of additional fields based on the checkbox state
                 if (chkAddTask.checked) {
                     taskFields.style.display = 'block';
-                    priorityFields.style.display = 'block';
-                } else {
+                 } else {
                     taskFields.style.display = 'none';
-                    priorityFields.style.display = 'none';
-                }
+                 }
             })
+       function openForwardTaskModal() {
+          // Open the modal
+          $('#forwardTaskModal').modal('show');
+      }
+       function forwardbutton() {
+          if ($('#txtEmployeeID').val() == '') {
+              alert("Fields are missing");
+              return false;
+          }
+           $('#forwardTaskModal').modal('hide');
+      }
+       $(document).ready(function () {
 
 
 
-           function openForwardTaskModal() {
-               // Open the modal
-               $('#forwardTaskModal').modal('show');
-           }
-
-           function forwardbutton() {
-               if ($('#txtEmployeeID').val()=='') {
-                   alert("Fields are missing");
-                   return false;
-               }
-
-               $('#forwardTaskModal').modal('hide');
-           }
 
 
-           $(document).ready(function () {
-
-               $('#btnForwardTask').click(function () {
-                   var employeeID = $('#txtEmployeeID').val();
-                   var comments = $('#txtComments').val();
 
 
-                   $.ajax({
-                       type: "POST",
-                       url: "Admin.aspx/ForwardTask", // Update the URL according to your setup
-                       data: JSON.stringify({ employeeID: employeeID, comments: comments }),
-                       contentType: "application/json; charset=utf-8",
-                       dataType: "json",
-                       success: function (response) {
-                           // Handle success response
-                           alert("Task forwarded successfully.");
-                           $('#forwardTaskModal').modal('hide');
-                       },
-                       error: function (xhr, textStatus, errorThrown) {
-                           // Handle error response
-                           console.error("Error: " + textStatus);
-                       }
-                   });
+
+
+           $('#ddlProject').change(function () {
+               var selectedProject = $(this).val(); // Get the selected project name
+
+              
+               $.ajax({
+                   type: "POST",
+                   url: "Admin.aspx/GetEmployeesByProject", // Update the URL according to your setup
+                   data: JSON.stringify({ projectName: selectedProject }),
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   success: function (response) {
+                       // Clear existing options in employee dropdown
+                       $('#ddlEmployee').empty();
+
+                       // Add fetched employee names to the dropdown
+                       $.each(response.d, function (index, item) {
+                           $('#ddlEmployee').append($('<option>', {
+                               value: item,
+                               text: item
+                           }));
+                       });
+                   },
+                   error: function (xhr, textStatus, errorThrown) {
+                       console.error("Error: " + textStatus);
+                       // Handle error response
+                   }
                });
            });
-       </script>
 
 
 
-    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          $('#ddlProject').click(function (e) {
+              //debugger;
+              // Prevent the default behavior of the modal closing
+              e.stopPropagation();
+          });
+           // Intercept click event of the ddlEmployee dropdown list
+          $('#ddlEmployee').click(function (e) {
+               // Prevent the default behavior of the modal closing
+              e.stopPropagation();
+          });
+           $('#btnForwardTask').click(function () {
+               var employeeID = $('#txtEmployeeID').val();
+              var comments = $('#txtComments').val();
+               $.ajax({
+                  type: "POST",
+                  url: "Admin.aspx/ForwardTask", // Update the URL according to your setup
+                  data: JSON.stringify({ employeeID: employeeID, comments: comments }),
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function (response) {
+                      // Handle success response
+                      alert("Task forwarded successfully.");
+                      $('#forwardTaskModal').modal('hide');
+                  },
+                  error: function (xhr, textStatus, errorThrown) {
+                      // Handle error response
+                      console.error("Error: " + textStatus);
+                      return false;
+                  }
+              });
+           });
+      });
+   </script>
+     </form>
 </body>
 </html>
