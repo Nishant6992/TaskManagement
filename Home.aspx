@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="TaskManagement.Home" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+ <!DOCTYPE html>
+ <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Task Management</title>
     <!-- Bootstrap CSS -->
@@ -35,8 +33,7 @@
                 </div>
             </div>
         </nav>
-
-        <!-- Jumbotron -->
+         <!-- Jumbotron -->
    <div class="jumbotron" style="padding-top: 30px; padding-bottom: 40px;">
     <div class="container">
         <h1 class="display-4">Welcome to Task Management</h1>
@@ -46,8 +43,7 @@
         <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
     </div>
 </div>
-
-        <!-- Random Content Section -->
+         <!-- Random Content Section -->
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-4">
@@ -77,16 +73,13 @@
                         </div>
                     </div>
                 </div>
-               
+                 <br />
                 <br />
                 <br />
                 <br />
-                <br />
-
-            </div>
+             </div>
         </div>
-
-        <!-- Login and Registration Section -->
+         <!-- Login and Registration Section -->
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -100,17 +93,14 @@
             </div>
         </div>
          <div  style=" margin-bottom: 100px;"></div>
-
-        <!-- Footer -->
+         <!-- Footer -->
         <footer class="footer bg-dark text-white text-center py-4 fixed-bottom">
             <div class="container">
                 <span>&copy; 2024 Task Management</span>
             </div>
         </footer>
-
-    </form>
-
-    <!-- Bootstrap JS (optional) -->
+     </form>
+     <!-- Bootstrap JS (optional) -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -9,8 +9,7 @@ using System.Web.UI.WebControls;
 using Entity;
 using DAL;
 using BAL;
-
-namespace TaskManagement
+ namespace TaskManagement
 {
     public partial class EditTask : System.Web.UI.Page
     {
@@ -18,18 +17,12 @@ namespace TaskManagement
         {
             if (!IsPostBack)
             {
-
-                if (Request.QueryString["taskId"] != null)
+                 if (Request.QueryString["taskId"] != null)
                 {
-
-                    string encryptedTaskId = Request.QueryString["taskId"];
+                     string encryptedTaskId = Request.QueryString["taskId"];
                     string taskId = Decrypt(encryptedTaskId);
-
-
-                    DataTable dt = GetTaskDetails(taskId);
-
-
-                    if (dt.Rows.Count > 0)
+                     DataTable dt = GetTaskDetails(taskId);
+                     if (dt.Rows.Count > 0)
                     {
                         txtEmployeeID.Text = dt.Rows[0]["EmployeeID"].ToString();
                         txtProjectID.Text = dt.Rows[0]["Project_id"].ToString();
@@ -43,8 +36,7 @@ namespace TaskManagement
                 }
             }
         }
-
-        private DataTable GetTaskDetails(string taskId)
+         private DataTable GetTaskDetails(string taskId)
         {
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
@@ -59,15 +51,12 @@ namespace TaskManagement
             }
             return dt;
         }
-
-
-        private string Decrypt(string encryptedText)
+         private string Decrypt(string encryptedText)
         {
             byte[] decryptedData = MachineKey.Unprotect(Convert.FromBase64String(encryptedText));
             return Encoding.UTF8.GetString(decryptedData);
         }
-
-        protected void btnUpdate_Click(object sender, EventArgs e)
+         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             businessobjects b1 = new businessobjects();
             b1.EmpId = Convert.ToInt32(txtEmployeeID.Text);
@@ -79,10 +68,8 @@ namespace TaskManagement
             b1.taskDescription = txtTaskDescription.Text;
             businesslogic blogic = new businesslogic();
             blogic.insert(b1);
-
-        }
-
-        protected void btnCancel_Click(object sender, EventArgs e)
+         }
+         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect("TaskList.aspx");
         }

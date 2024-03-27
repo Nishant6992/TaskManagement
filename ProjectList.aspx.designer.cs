@@ -6,15 +6,11 @@
 //     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace TaskManagement
+ namespace TaskManagement
 {
-
-
-    public partial class ProjectList
+     public partial class ProjectList
     {
-
-        /// <summary>
+         /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -22,8 +18,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
+         /// <summary>
         /// rptProjects control.
         /// </summary>
         /// <remarks>

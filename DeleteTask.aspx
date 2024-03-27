@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DeleteTask.aspx.cs" Inherits="TaskManagement.DeleteTask" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+ <!DOCTYPE html>
+ <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Delete Task</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -42,50 +40,39 @@
         <div class="container" style="margin-top: 40px; background-color:seashell; border-radius:12px; height:210px;" >
             <h2>Delete Task</h2>
             <hr />
-
-            <div class="form-group">
+             <div class="form-group">
                 <label for="ddlTasks">Select Task:</label>
                 <asp:DropDownList ID="ddlTasks" runat="server" CssClass="form-control">
                     <asp:ListItem Text="--Select--" Value="" />
-
-                </asp:DropDownList>
+                 </asp:DropDownList>
             </div>
-
-            <div class="task-details">
+             <div class="task-details">
                 <!-- Task details will be displayed here -->
             </div>
-
-            <div class="form-group mt-3">
+             <div class="form-group mt-3">
                 <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger mr-2" OnClick="btnDelete_Click" />
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-secondary" OnClick="btnCancel_Click" />
             </div>
         </div>
-
-
-        <div class="container" style="margin-top: 100px;background-color:seashell; border-radius:12px; height:210px;">
+         <div class="container" style="margin-top: 100px;background-color:seashell; border-radius:12px; height:210px;">
             <h2>Delete Project</h2>
             <hr />
-
-            <div class="form-group">
+             <div class="form-group">
                 <label for="ddlTasks">Select Project:</label>
                 <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
                     <asp:ListItem Text="--Select--" Value="" />
-
-                </asp:DropDownList>
+                 </asp:DropDownList>
             </div>
-
-            <div class="task-details">
+             <div class="task-details">
                 <!-- Task details will be displayed here -->
             </div>
-
-            <div class="form-group mt-3">
+             <div class="form-group mt-3">
                 <asp:Button ID="Button1" runat="server" Text="Delete" CssClass="btn btn-danger mr-2" OnClick="btnDelete_Click" />
                 <asp:Button ID="Button2" runat="server" Text="Cancel" CssClass="btn btn-secondary" OnClick="btnCancel_Click" />
             </div>
         </div>
     </form>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>

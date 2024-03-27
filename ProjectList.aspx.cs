@@ -6,8 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
-
-namespace TaskManagement
+ namespace TaskManagement
 {
     public partial class ProjectList : System.Web.UI.Page
     {
@@ -18,8 +17,7 @@ namespace TaskManagement
                 BindProjectList();
             }
         }
-
-        protected void BindProjectList()
+         protected void BindProjectList()
         {
             try
             {
@@ -31,8 +29,7 @@ namespace TaskManagement
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
-
-                        if (dt.Rows.Count > 0)
+                         if (dt.Rows.Count > 0)
                         {
                             rptProjects.DataSource = dt;
                             rptProjects.DataBind();
@@ -45,8 +42,7 @@ namespace TaskManagement
                 // Handle exception
             }
         }
-
-        //protected void rptProjects_ItemCommand(object source, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
+         //protected void rptProjects_ItemCommand(object source, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
         //{
         //    if (e.CommandName == "Edit")
         //    {
@@ -65,20 +61,14 @@ namespace TaskManagement
         {
             Button btnEdit = (Button)sender;
             string projectId = btnEdit.CommandArgument;
-
-            // Encrypt the TaskID parameter
+             // Encrypt the TaskID parameter
             string encryptedProjectId = Encrypt(projectId);
-
-
-            Response.Redirect($"EditProject.aspx?Project_id={HttpUtility.UrlEncode(encryptedProjectId)}");
+             Response.Redirect($"EditProject.aspx?Project_id={HttpUtility.UrlEncode(encryptedProjectId)}");
         }
         private string Encrypt(string projectId)
         {
-
-            byte[] encryptedData = MachineKey.Protect(Encoding.UTF8.GetBytes(projectId));
+             byte[] encryptedData = MachineKey.Protect(Encoding.UTF8.GetBytes(projectId));
             return Convert.ToBase64String(encryptedData);
         }
-
-       
-    }
+     }
 }

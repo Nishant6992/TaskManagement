@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="TaskManagement.Index" %>
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -12,21 +11,18 @@
             margin: 0;
             padding: 0;
         }
-
-        form {
+         form {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-            form center {
+             form center {
                 font-size: 24px;
                 margin-bottom: 20px;
                 display: block;
             }
-
-            form label {
+             form label {
                 display: block;
                 margin-bottom: 5px;
                 font-weight: bold;
@@ -52,8 +48,7 @@
                             <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
-
-                    <div class="form-group">
+                     <div class="form-group">
                         <label for="emailid">Email ID</label>
                         <asp:TextBox ID="emailid" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
@@ -100,29 +95,19 @@
         var password = document.getElementById('<%= password.ClientID %>').value;
         var confirmPassword = document.getElementById('<%= confirmpassword.ClientID %>').value;
         var gender = document.getElementById('<%= gender.ClientID %>').value;
-
-
-        if (gender === "") {
+         if (gender === "") {
             alert("Please select your gender");
             return false;
         }
-
-
-        if (password.length < 8) {
+         if (password.length < 8) {
             alert("Password must be at least 8 characters long");
             return false;
         }
-
-        if (password !== confirmPassword) {
+         if (password !== confirmPassword) {
             alert("Passwords do not match");
             return false;
         }
-
-
-
-        return true;
+         return true;
     }
 </script>
-
-
-</html>
+ </html>

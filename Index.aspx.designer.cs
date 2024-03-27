@@ -6,15 +6,11 @@
 //     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace TaskManagement
+ namespace TaskManagement
 {
-
-
-    public partial class Index
+     public partial class Index
     {
-
-        /// <summary>
+         /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -22,8 +18,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
+         /// <summary>
         /// txtname control.
         /// </summary>
         /// <remarks>
@@ -31,8 +26,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtname;
-
-        /// <summary>
+         /// <summary>
         /// gender control.
         /// </summary>
         /// <remarks>
@@ -40,8 +34,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList gender;
-
-        /// <summary>
+         /// <summary>
         /// emailid control.
         /// </summary>
         /// <remarks>
@@ -49,8 +42,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox emailid;
-
-        /// <summary>
+         /// <summary>
         /// state control.
         /// </summary>
         /// <remarks>
@@ -58,8 +50,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox state;
-
-        /// <summary>
+         /// <summary>
         /// mobilenumber control.
         /// </summary>
         /// <remarks>
@@ -67,8 +58,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox mobilenumber;
-
-        /// <summary>
+         /// <summary>
         /// age control.
         /// </summary>
         /// <remarks>
@@ -76,8 +66,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox age;
-
-        /// <summary>
+         /// <summary>
         /// address control.
         /// </summary>
         /// <remarks>
@@ -85,8 +74,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox address;
-
-        /// <summary>
+         /// <summary>
         /// password control.
         /// </summary>
         /// <remarks>
@@ -94,8 +82,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox password;
-
-        /// <summary>
+         /// <summary>
         /// confirmpassword control.
         /// </summary>
         /// <remarks>
@@ -103,8 +90,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox confirmpassword;
-
-        /// <summary>
+         /// <summary>
         /// ddlRole control.
         /// </summary>
         /// <remarks>
@@ -112,8 +98,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRole;
-
-        /// <summary>
+         /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

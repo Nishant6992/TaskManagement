@@ -6,15 +6,11 @@
 //     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace TaskManagement
+ namespace TaskManagement
 {
-
-
-    public partial class CreateTask
+     public partial class CreateTask
     {
-
-        /// <summary>
+         /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -22,8 +18,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
+         /// <summary>
         /// lblEmployeeid control.
         /// </summary>
         /// <remarks>
@@ -31,8 +26,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblEmployeeid;
-
-        /// <summary>
+         /// <summary>
         /// ddlEmployeesid control.
         /// </summary>
         /// <remarks>
@@ -40,8 +34,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmployeesid;
-
-        /// <summary>
+         /// <summary>
         /// lblprojectid control.
         /// </summary>
         /// <remarks>
@@ -49,8 +42,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblprojectid;
-
-        /// <summary>
+         /// <summary>
         /// txtprojectid control.
         /// </summary>
         /// <remarks>
@@ -58,8 +50,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtprojectid;
-
-        /// <summary>
+         /// <summary>
         /// lblprojectname control.
         /// </summary>
         /// <remarks>
@@ -67,8 +58,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblprojectname;
-
-        /// <summary>
+         /// <summary>
         /// txtprojectname control.
         /// </summary>
         /// <remarks>
@@ -76,8 +66,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtprojectname;
-
-        /// <summary>
+         /// <summary>
         /// lblStartDate control.
         /// </summary>
         /// <remarks>
@@ -85,8 +74,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStartDate;
-
-        /// <summary>
+         /// <summary>
         /// txtStartDate control.
         /// </summary>
         /// <remarks>
@@ -94,8 +82,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStartDate;
-
-        /// <summary>
+         /// <summary>
         /// lblDeadlineDate control.
         /// </summary>
         /// <remarks>
@@ -103,8 +90,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDeadlineDate;
-
-        /// <summary>
+         /// <summary>
         /// txtDeadlineDate control.
         /// </summary>
         /// <remarks>
@@ -112,8 +98,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDeadlineDate;
-
-        /// <summary>
+         /// <summary>
         /// lblPriority control.
         /// </summary>
         /// <remarks>
@@ -121,8 +106,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblPriority;
-
-        /// <summary>
+         /// <summary>
         /// ddlPriority control.
         /// </summary>
         /// <remarks>
@@ -130,8 +114,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
-
-        /// <summary>
+         /// <summary>
         /// lblTaskDescription control.
         /// </summary>
         /// <remarks>
@@ -139,8 +122,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTaskDescription;
-
-        /// <summary>
+         /// <summary>
         /// txtTaskDescription control.
         /// </summary>
         /// <remarks>
@@ -148,8 +130,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTaskDescription;
-
-        /// <summary>
+         /// <summary>
         /// fileUpload control.
         /// </summary>
         /// <remarks>
@@ -157,8 +138,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileUpload;
-
-        /// <summary>
+         /// <summary>
         /// btnSubmit control.
         /// </summary>
         /// <remarks>

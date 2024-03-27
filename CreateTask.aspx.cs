@@ -8,8 +8,7 @@ using BAL;
 using Entity;
 using System.IO;
 using System.Globalization;
-
-namespace TaskManagement
+ namespace TaskManagement
 {
     public partial class CreateTask : System.Web.UI.Page
     {
@@ -20,12 +19,9 @@ namespace TaskManagement
                 PopulateEmployeeDropDown();
             }
         }
-
-        private void PopulateEmployeeDropDown()
+         private void PopulateEmployeeDropDown()
         {
-
-
-            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+             string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 string query2 = "SELECT ID FROM EmployeeNish";
@@ -38,26 +34,22 @@ namespace TaskManagement
                         {
                             ListItem item = new ListItem();
                             item.Text = reader["ID"].ToString();
-
-                            ddlEmployeesid.Items.Add(item);
+                             ddlEmployeesid.Items.Add(item);
                         }
                     }
                 }
             }
         }
-
-        protected void btnSubmit_Click(object sender, EventArgs e)
+         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (fileUpload.HasFile)
             {
                 string fileName = Path.GetFileName(fileUpload.PostedFile.FileName);
                 string virtualFolderPath = "~/Uploaded/";
                 string virtualFilePath = Path.Combine(virtualFolderPath, fileName);
-
-                string physicalFilePath = Server.MapPath(virtualFilePath);
+                 string physicalFilePath = Server.MapPath(virtualFilePath);
                 fileUpload.SaveAs(physicalFilePath);
-
-                businessobjects objTask = new businessobjects();
+                 businessobjects objTask = new businessobjects();
                 objTask.EmpId = Convert.ToInt32(ddlEmployeesid.SelectedValue);
                 objTask.Date = txtStartDate.Text;
                 objTask.deadlineDate = txtDeadlineDate.Text;
@@ -67,12 +59,10 @@ namespace TaskManagement
                 objTask.projectname = txtprojectname.Text;
                 //objTask.filepath = virtualFilePath;
                 objTask.filepath = physicalFilePath;
-
-                businesslogic b1 = new businesslogic();
+                 businesslogic b1 = new businesslogic();
                 b1.informUser(objTask);
                 b1.insert(objTask);
             }
         }
-
-    }
+     }
 }

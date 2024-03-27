@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TaskManagement.Login" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+ <!DOCTYPE html>
+ <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
      <link rel="stylesheet" href="StyleSheet1.css"/> 
@@ -22,8 +20,7 @@
                         <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="login__input" placeholder="Password"></asp:TextBox>
                     </div>
                     <asp:Button ID="btnLogin" runat="server" CssClass="button login__submit" Text="Log In Now" OnClick="btnLogin_Click" />
-                
-                   <%-- <div class="social-login">
+                    <%-- <div class="social-login">
                         <h3>log in via</h3>
                         <div class="social-icons">
                             <a href="#" class="social-login__icon fab fa-instagram"></a>

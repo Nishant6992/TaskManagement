@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="IncorrectCredentials.aspx.cs" Inherits="TaskManagement.IncorrectCredentials" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+ <!DOCTYPE html>
+ <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Apology for Incorrect Credentials</title>
     <style>
@@ -12,8 +10,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-
-        .container {
+         .container {
             width: 50%;
             margin: 100px auto;
             background-color: #fff;

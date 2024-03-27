@@ -6,15 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
  namespace TaskManagement
 {
-    public partial class DeleteTask : System.Web.UI.Page
+    public partial class _try : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-         }
-         protected void btnDelete_Click(object sender, EventArgs e)
-        {
-         }
-         protected void btnCancel_Click(object sender, EventArgs e)
         {
          }
     }

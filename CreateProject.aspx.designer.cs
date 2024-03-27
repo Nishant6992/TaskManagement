@@ -6,15 +6,11 @@
 //     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace TaskManagement
+ namespace TaskManagement
 {
-
-
-    public partial class CreateProject
+     public partial class CreateProject
     {
-
-        /// <summary>
+         /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -22,8 +18,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
+         /// <summary>
         /// Label2 control.
         /// </summary>
         /// <remarks>
@@ -31,8 +26,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-
-        /// <summary>
+         /// <summary>
         /// txtProjectName control.
         /// </summary>
         /// <remarks>
@@ -40,8 +34,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProjectName;
-
-        /// <summary>
+         /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -49,8 +42,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-
-        /// <summary>
+         /// <summary>
         /// txtStartDate control.
         /// </summary>
         /// <remarks>
@@ -58,8 +50,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStartDate;
-
-        /// <summary>
+         /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -67,8 +58,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-
-        /// <summary>
+         /// <summary>
         /// txtDeadline control.
         /// </summary>
         /// <remarks>
@@ -76,8 +66,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDeadline;
-
-        /// <summary>
+         /// <summary>
         /// Label5 control.
         /// </summary>
         /// <remarks>
@@ -85,8 +74,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label5;
-
-        /// <summary>
+         /// <summary>
         /// txtProjectDescription control.
         /// </summary>
         /// <remarks>
@@ -94,8 +82,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProjectDescription;
-
-        /// <summary>
+         /// <summary>
         /// Label8 control.
         /// </summary>
         /// <remarks>
@@ -103,8 +90,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label8;
-
-        /// <summary>
+         /// <summary>
         /// ddlEmployeesid control.
         /// </summary>
         /// <remarks>
@@ -112,8 +98,7 @@ namespace TaskManagement
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmployeesid;
-
-        /// <summary>
+         /// <summary>
         /// SubmitButton control.
         /// </summary>
         /// <remarks>

@@ -97,14 +97,14 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="forwardTaskModalLabel">Forward Task</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<%--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>
+                        </button>--%>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="ddlProject">Select Project:</label>
-                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control" AutoPostBack="false" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged">
                                 <%-- <asp:ListItem Text="Choose Project" Value="" />--%>
                             </asp:DropDownList>
                         </div>
@@ -136,8 +136,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="txtTaskDescription">Task Description:</label>
-                                <textarea id="txtTaskDescription" class="form-control" rows="3"></textarea>
-                            </div>
+                               <asp:TextBox ID="txtTaskDescription" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                             </div>
                          </div>
                          <div class="form-group">
                             <label for="ddlEmployee">Select Employee:</label>
@@ -145,17 +145,17 @@
                             </asp:DropDownList>
                         </div>
                         <div class="form-group">
-                            <label for="txtComments">Comments:</label>
-                            <textarea class="form-control" id="txtComments" rows="3" placeholder="Enter comments" runat="server"></textarea>
-                        </div>
+                            <asp:Label ID="lblComments" runat="server" AssociatedControlID="txtComments" Text="Comments:"></asp:Label>
+                           <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" placeholder="Enter comments" />
+                         </div>
                         <div class="form-group">
                             <label for="fileUpload">Upload File:</label>
                             <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control" />
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="btnForwardTask" onclick="forwardbutton();">Forward Task</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <asp:Button ID="btnForwardTask" runat="server" Text="Forward Task" CssClass="btn btn-primary" OnClientClick="forwardbutton(); return false;" OnClick="btnForwardTask_Click" />
+                         <asp:Button  runat="server" class="btn btn-secondary" data-dismiss="modal" Text="Close"></asp:Button>
                     </div>
                 </div>
             </div>
@@ -191,30 +191,18 @@
            $('#forwardTaskModal').modal('hide');
       }
        $(document).ready(function () {
-
-
-
-
-
-
-
-
-
-           $('#ddlProject').change(function () {
-               var selectedProject = $(this).val(); // Get the selected project name
-
-              
-               $.ajax({
+            $('#ddlProject').change(function () {
+               var selectedProject = $(this).val(); 
+                $.ajax({
                    type: "POST",
-                   url: "Admin.aspx/GetEmployeesByProject", // Update the URL according to your setup
+                   url: "Admin.aspx/GetEmployeesByProject",
                    data: JSON.stringify({ projectName: selectedProject }),
                    contentType: "application/json; charset=utf-8",
                    dataType: "json",
                    success: function (response) {
                        // Clear existing options in employee dropdown
                        $('#ddlEmployee').empty();
-
-                       // Add fetched employee names to the dropdown
+                        // Add fetched employee names to the dropdown
                        $.each(response.d, function (index, item) {
                            $('#ddlEmployee').append($('<option>', {
                                value: item,
@@ -227,43 +215,8 @@
                        // Handle error response
                    }
                });
-           });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          $('#ddlProject').click(function (e) {
+           })
+           $('#ddlProject').click(function (e) {
               //debugger;
               // Prevent the default behavior of the modal closing
               e.stopPropagation();

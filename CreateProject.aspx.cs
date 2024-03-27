@@ -7,22 +7,19 @@ using System.Web.UI.WebControls;
 using BAL;
 using DAL;
 using Entity;
-
-namespace TaskManagement
+ namespace TaskManagement
 {
     public partial class CreateProject : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            PopulateEmployeesDropDownList();
+             PopulateEmployeesDropDownList();
         }
         private void PopulateEmployeesDropDownList()
         {
             // Call method from business logic layer to get employee IDs
             List<string> employeeIDs = businesslogic.GetEmployeeIDs();
-
-            //employeeIDs.Insert(0, "--Select--");
+             //employeeIDs.Insert(0, "--Select--");
             ddlEmployeesid.DataSource = employeeIDs;
             ddlEmployeesid.DataBind();
         }
@@ -37,7 +34,5 @@ namespace TaskManagement
             businesslogic blogic = new businesslogic();
             blogic.addProject(bobj);
         }
-
-        
-    }
+     }
 } 

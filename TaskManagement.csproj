@@ -96,6 +96,7 @@
     <Content Include="StyleSheet1.css" />
     <Content Include="TaskList.aspx" />
     <Content Include="Admin.aspx" />
+    <Content Include="try.aspx" />
     <Content Include="Web.config" />
     <Content Include="wecome.aspx" />
   </ItemGroup>
@@ -184,6 +185,13 @@
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="try.aspx.cs">
+      <DependentUpon>try.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="try.aspx.designer.cs">
+      <DependentUpon>try.aspx</DependentUpon>
     </Compile>
     <Compile Include="wecome.aspx.cs">
       <DependentUpon>wecome.aspx</DependentUpon>
