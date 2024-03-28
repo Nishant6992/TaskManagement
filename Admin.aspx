@@ -1,10 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="TaskManagement.UserUI" %>
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head runat="server">
     <title>Task Management System</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
- </head>
+</head>
 <body>
     <form id="form1" runat="server">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,7 +38,7 @@
                 </div>
             </div>
         </nav>
-         <div class="container mt-5">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
@@ -56,15 +57,15 @@
                                 <HeaderTemplate>
                                     <ul class="list-group">
                                 </HeaderTemplate>
-                                 <ItemTemplate>
+                                <ItemTemplate>
                                     <div class="card mb-3">
                                         <li class="list-group-item">
-                                             <b>Project ID:</b> <%# Eval("Project_id") %><br />
+                                            <b>Project ID:</b> <%# Eval("Project_id") %><br />
                                             <b>Project Name:</b> <%# Eval("projectname") %><br />
                                             <b>Start Date:</b> <%# Eval("project_startDate") %><br />
                                             <b>End Date:</b> <%# Eval("project_endDate") %><br />
                                             <b>Description:</b> <%# Eval("project_Description") %><br />
-                                         </li>
+                                        </li>
                                     </div>
                                 </ItemTemplate>
                                 <FooterTemplate>
@@ -87,6 +88,26 @@
                             </asp:Repeater>
                             <asp:Label ID="lblWarningMessage" runat="server" CssClass="warning" Visible="false"></asp:Label>
                         </div>
+
+                        <div class="col-md-6">
+                            <h3>Forwarded Tasks</h3>
+                            <asp:Repeater ID="rptForwardedTasks" runat="server">
+                                <ItemTemplate>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Forward Task ID: <%# Eval("ID") %></h5>
+                                            <p class="card-text">Task Name: <%# Eval("ForwardTaskName") %></p>
+                                            <p class="card-text">Task Priority: <%# Eval("ForwardTaskPriority") %></p>
+                                            <p class="card-text">Task Date: <%# Eval("ForwardTaskDate") %></p>
+                                            <p class="card-text">Deadline Date: <%# Eval("ForwardTaskDeadlineDate") %></p>
+                                            <p class="card-text">Task Description: <%# Eval("ForwardTaskDescription") %></p>
+                                            <p class="card-text">Employee ID: <%# Eval("EmployeeID") %></p>
+                                            <p class="card-text">Comments: <%# Eval("Comments") %></p>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,7 +118,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="forwardTaskModalLabel">Forward Task</h5>
-<%--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <%--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>--%>
                     </div>
@@ -108,7 +129,7 @@
                                 <%-- <asp:ListItem Text="Choose Project" Value="" />--%>
                             </asp:DropDownList>
                         </div>
-                         <div class="form-group">
+                        <div class="form-group">
                             <%--<asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?" OnClientClick="showOrHideTaskFields()" />--%>
                             <asp:CheckBox ID="chkAddTask" runat="server" Text="Do you want to add Task?" />
                         </div>
@@ -136,119 +157,124 @@
                             </div>
                             <div class="form-group">
                                 <label for="txtTaskDescription">Task Description:</label>
-                               <asp:TextBox ID="txtTaskDescription" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
-                             </div>
-                         </div>
-                         <div class="form-group">
+                                <asp:TextBox ID="txtTaskDescription" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="ddlEmployee">Select Employee:</label>
                             <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                         <div class="form-group">
                             <asp:Label ID="lblComments" runat="server" AssociatedControlID="txtComments" Text="Comments:"></asp:Label>
-                           <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" placeholder="Enter comments" />
-                         </div>
+                            <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" placeholder="Enter comments" />
+                        </div>
                         <div class="form-group">
                             <label for="fileUpload">Upload File:</label>
                             <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control" />
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="btnForwardTask" runat="server" Text="Forward Task" CssClass="btn btn-primary" OnClientClick="forwardbutton(); return false;" OnClick="btnForwardTask_Click" />
-                         <asp:Button  runat="server" class="btn btn-secondary" data-dismiss="modal" Text="Close"></asp:Button>
+                        <asp:Button ID="btnForwardTask" runat="server" Text="Forward Task" CssClass="btn btn-primary" OnClientClick="forwardbutton(); return true;" OnClick="btnForwardTask_Click" />
+                        <asp:Button runat="server" class="btn btn-secondary" data-dismiss="modal" Text="Close"></asp:Button>
                     </div>
                 </div>
             </div>
         </div>
-         <footer class="footer fixed-bottom bg-dark text-white text-center py-3" style="margin-top: 3000px">
+        <div style="margin-top:100px;">
+
+        </div>
+        <footer class="footer fixed-bottom bg-dark text-white text-center py-3">
             Project:
             <asp:Label ID="lblProjectName" runat="server" ClientIDMode="Static"></asp:Label>
             <asp:Button ID="btnForward" runat="server" Text="Forward" CssClass="btn btn-primary ml-2" OnClientClick="openForwardTaskModal(); return false;" />
             <asp:Button ID="btnAttachment" runat="server" Text="Attachment" CssClass="btn btn-secondary" OnClick="btnAttachment_Click" />
+          
+
         </footer>
-         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   <script>
-       $("#chkAddTask").click(function () {
-           var taskFields = document.getElementById('taskFields');
-           var chkAddTask = document.getElementById("chkAddTask");
-                 // Toggle the display of additional fields based on the checkbox state
+        <script>
+            $("#chkAddTask").click(function () {
+                var taskFields = document.getElementById('taskFields');
+                var chkAddTask = document.getElementById("chkAddTask");
+                // Toggle the display of additional fields based on the checkbox state
                 if (chkAddTask.checked) {
                     taskFields.style.display = 'block';
-                 } else {
+                } else {
                     taskFields.style.display = 'none';
-                 }
+                }
             })
-       function openForwardTaskModal() {
-          // Open the modal
-          $('#forwardTaskModal').modal('show');
-      }
-       function forwardbutton() {
-          if ($('#txtEmployeeID').val() == '') {
-              alert("Fields are missing");
-              return false;
-          }
-           $('#forwardTaskModal').modal('hide');
-      }
-       $(document).ready(function () {
-            $('#ddlProject').change(function () {
-               var selectedProject = $(this).val(); 
-                $.ajax({
-                   type: "POST",
-                   url: "Admin.aspx/GetEmployeesByProject",
-                   data: JSON.stringify({ projectName: selectedProject }),
-                   contentType: "application/json; charset=utf-8",
-                   dataType: "json",
-                   success: function (response) {
-                       // Clear existing options in employee dropdown
-                       $('#ddlEmployee').empty();
-                        // Add fetched employee names to the dropdown
-                       $.each(response.d, function (index, item) {
-                           $('#ddlEmployee').append($('<option>', {
-                               value: item,
-                               text: item
-                           }));
-                       });
-                   },
-                   error: function (xhr, textStatus, errorThrown) {
-                       console.error("Error: " + textStatus);
-                       // Handle error response
-                   }
-               });
-           })
-           $('#ddlProject').click(function (e) {
-              //debugger;
-              // Prevent the default behavior of the modal closing
-              e.stopPropagation();
-          });
-           // Intercept click event of the ddlEmployee dropdown list
-          $('#ddlEmployee').click(function (e) {
-               // Prevent the default behavior of the modal closing
-              e.stopPropagation();
-          });
-           $('#btnForwardTask').click(function () {
-               var employeeID = $('#txtEmployeeID').val();
-              var comments = $('#txtComments').val();
-               $.ajax({
-                  type: "POST",
-                  url: "Admin.aspx/ForwardTask", // Update the URL according to your setup
-                  data: JSON.stringify({ employeeID: employeeID, comments: comments }),
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function (response) {
-                      // Handle success response
-                      alert("Task forwarded successfully.");
-                      $('#forwardTaskModal').modal('hide');
-                  },
-                  error: function (xhr, textStatus, errorThrown) {
-                      // Handle error response
-                      console.error("Error: " + textStatus);
-                      return false;
-                  }
-              });
-           });
-      });
-   </script>
-     </form>
+            function openForwardTaskModal() {
+                // Open the modal
+                $('#forwardTaskModal').modal('show');
+            }
+            function forwardbutton() {
+                if ($('#txtEmployeeID').val() == '') {
+                    //alert("Fields are missing");
+                    return true;
+                }
+                $('#forwardTaskModal').modal('hide');
+            }
+            $(document).ready(function () {
+                $('#ddlProject').change(function () {
+                    var selectedProject = $(this).val();
+                    $.ajax({
+                        type: "POST",
+                        url: "Admin.aspx/GetEmployeesByProject",
+                        data: JSON.stringify({ projectName: selectedProject }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            // Clear existing options in employee dropdown
+                            $('#ddlEmployee').empty();
+                            // Add fetched employee names to the dropdown
+                            $.each(response.d, function (index, item) {
+                                $('#ddlEmployee').append($('<option>', {
+                                    value: item,
+                                    text: item
+                                }));
+                            });
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.error("Error: " + textStatus);
+                            // Handle error response
+                        }
+                    });
+                })
+                $('#ddlProject').click(function (e) {
+                    //debugger;
+                    // Prevent the default behavior of the modal closing
+                    e.stopPropagation();
+                });
+                // Intercept click event of the ddlEmployee dropdown list
+                $('#ddlEmployee').click(function (e) {
+                    // Prevent the default behavior of the modal closing
+                    e.stopPropagation();
+                });
+                $('#btnForwardTask').click(function () {
+                    var employeeID = $('#txtEmployeeID').val();
+                    var comments = $('#txtComments').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "Admin.aspx/ForwardTask", // Update the URL according to your setup
+                        data: JSON.stringify({ employeeID: employeeID, comments: comments }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            // Handle success response
+                            alert("Task forwarded successfully.");
+                            $('#forwardTaskModal').modal('hide');
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            // Handle error response
+                            console.error("Error: " + textStatus);
+                            return false;
+                        }
+                    });
+                });
+            });
+        </script>
+    </form>
 </body>
 </html>

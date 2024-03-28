@@ -21,6 +21,9 @@ using Entity;
             bobj.emailid = txtemail.Text;
             businesslogic blogic = new businesslogic();
             blogic.checkCredentials(bobj);
+            
+           
          }
+
     }
 }

@@ -1,0 +1,15 @@
+run the folowing in winodws+run:
+chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+
+ddlProject
+txtTaskName
+ddlTaskPriority
+txtTaskStartDate
+txtTaskEndDate
+txtTaskDescription
+ddlEmployee
+txtComments
+fileUpload
+
+then a button name is "Forward Task"
+

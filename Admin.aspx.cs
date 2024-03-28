@@ -8,7 +8,13 @@ using BAL;
 using Entity;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
- namespace TaskManagement
+using System.IO;
+using System.Text.RegularExpressions;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+
+namespace TaskManagement
 {
     public partial class UserUI : System.Web.UI.Page
     {
@@ -16,6 +22,8 @@ using System.Collections.Generic;
         {
             if (!IsPostBack)
             {
+                if (Session["Name"] == null && Session["Email"] == null)
+                    Response.Redirect("Login.aspx");
                 PopulateProjectDropDown();
                 PopulateEmpDropDown();
                 string userName = "Admin";
@@ -28,18 +36,18 @@ using System.Collections.Generic;
         public static List<string> GetEmployeesByProject(string projectName)
         {
             List<string> employeeNames = new List<string>();
-             string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand("FetchEmp", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@projectname", projectName);
-                     if (con.State == ConnectionState.Closed)
+                    if (con.State == ConnectionState.Closed)
                     {
                         con.Open();
                     }
-                     using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         employeeNames.Add("--Select Employee--");
                         while (reader.Read())
@@ -49,22 +57,22 @@ using System.Collections.Generic;
                     }
                 }
             }
-             return employeeNames;
+            return employeeNames;
         }
         private void PopulateEmpDropDown()
         {
-             string projectName = ddlProject.SelectedValue;
+            string projectName = ddlProject.SelectedValue;
             List<string> empName = businesslogic.AddEmp(projectName);
-             ddlEmployee.DataSource = empName;
+            ddlEmployee.DataSource = empName;
             ddlEmployee.DataBind();
         }
-         private void PopulateProjectDropDown()
+        private void PopulateProjectDropDown()
         {
             List<string> projects = businesslogic.Add();
-             ddlProject.DataSource = projects;
+            ddlProject.DataSource = projects;
             ddlProject.DataBind();
         }
-         protected string GetPriorityColor(object priority)
+        protected string GetPriorityColor(object priority)
         {
             string color = "";
             if (priority != null)
@@ -88,19 +96,19 @@ using System.Collections.Generic;
             }
             return color;
         }
-         private void FetchUserTasks()
+        private void FetchUserTasks()
         {
             try
             {
                 int employeeID = Convert.ToInt32(txtEmployeeID.Text);
-                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
                 {
                     using (SqlCommand cmd = new SqlCommand("SELECT * FROM Task WHERE EmployeeID = @EmployeeID", con))
                     {
                         cmd.Parameters.AddWithValue("@EmployeeID", employeeID);
-                         con.Open();
+                        con.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
-                         DataTable tasksTable = new DataTable();
+                        DataTable tasksTable = new DataTable();
                         tasksTable.Columns.Add("TaskID", typeof(int));
                         tasksTable.Columns.Add("Start_Date", typeof(DateTime));
                         tasksTable.Columns.Add("Deadline_Date", typeof(DateTime));
@@ -109,7 +117,7 @@ using System.Collections.Generic;
                         tasksTable.Columns.Add("Project_id", typeof(int));
                         tasksTable.Columns.Add("ProjectName", typeof(string));
                         tasksTable.Columns.Add("FilePath", typeof(string));
-                         while (reader.Read())
+                        while (reader.Read())
                         {
                             DataRow taskRow = tasksTable.NewRow();
                             taskRow["TaskID"] = Convert.ToInt32(reader["TaskID"]);
@@ -120,7 +128,7 @@ using System.Collections.Generic;
                             taskRow["Project_id"] = Convert.ToInt32(reader["Project_id"]);
                             taskRow["ProjectName"] = reader["projectName"].ToString(); // Adjust column name accordingly
                             taskRow["FilePath"] = reader["FilePath"].ToString();
-                             tasksTable.Rows.Add(taskRow);
+                            tasksTable.Rows.Add(taskRow);
                         }
                         rptIndividualTasks.DataSource = tasksTable;
                         rptIndividualTasks.DataBind();
@@ -137,25 +145,58 @@ using System.Collections.Generic;
                 // Handle exception
             }
         }
-         private void FetchProjects()
+
+
+        private void FetchForwardedTasks()
         {
             try
             {
-                 int employeeID = Convert.ToInt32(txtEmployeeID.Text);
-                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
+                int employeeID = Convert.ToInt32(txtEmployeeID.Text);
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM ForwardTask WHERE EmployeeID = @EmployeeID", con))
+                    {
+                        cmd.Parameters.AddWithValue("@EmployeeID", employeeID);
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable forwardedTasksTable = new DataTable();
+                        forwardedTasksTable.Load(reader);
+                        rptForwardedTasks.DataSource = forwardedTasksTable;
+                        rptForwardedTasks.DataBind();
+                        if (forwardedTasksTable.Rows.Count == 0)
+                        {
+                            rptForwardedTasks.DataSource = null;
+                            rptForwardedTasks.DataBind();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exception
+            }
+        }
+
+
+        private void FetchProjects()
+        {
+            try
+            {
+                int employeeID = Convert.ToInt32(txtEmployeeID.Text);
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr"].ConnectionString))
                 {
                     using (SqlCommand cmd = new SqlCommand("SELECT * FROM projectnish WHERE Employee_id = @EmployeeID", con))
                     {
                         cmd.Parameters.AddWithValue("@EmployeeID", employeeID);
-                         con.Open();
+                        con.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
-                         DataTable projectsTable = new DataTable();
+                        DataTable projectsTable = new DataTable();
                         projectsTable.Columns.Add("Project_id", typeof(int));
                         projectsTable.Columns.Add("projectname", typeof(string));
                         projectsTable.Columns.Add("project_startDate", typeof(string));
                         projectsTable.Columns.Add("project_endDate", typeof(string));
                         projectsTable.Columns.Add("project_Description", typeof(string));
-                         while (reader.Read())
+                        while (reader.Read())
                         {
                             DataRow projectRow = projectsTable.NewRow();
                             projectRow["Project_id"] = Convert.ToInt32(reader["Project_id"]);
@@ -163,11 +204,11 @@ using System.Collections.Generic;
                             projectRow["project_startDate"] = (reader["project_startDate"]);
                             projectRow["project_endDate"] = (reader["project_endDate"]);
                             projectRow["project_Description"] = reader["project_Description"].ToString();
-                             projectsTable.Rows.Add(projectRow);
+                            projectsTable.Rows.Add(projectRow);
                         }
-                         rptProjects.DataSource = projectsTable;
+                        rptProjects.DataSource = projectsTable;
                         rptProjects.DataBind();
-                         if (projectsTable.Rows.Count == 0)
+                        if (projectsTable.Rows.Count == 0)
                         {
                             rptProjects.DataSource = null;
                             rptProjects.DataBind();
@@ -180,25 +221,33 @@ using System.Collections.Generic;
                 // Handle exception
             }
         }
-         protected void btnFetchTasks_Click(object sender, EventArgs e)
+        protected void btnFetchTasks_Click(object sender, EventArgs e)
         {
             FetchUserTasks();
             FetchProjects();
+            FetchForwardedTasks();
         }
-         protected void btnAttachment_Click(object sender, EventArgs e)
+        protected void btnAttachment_Click(object sender, EventArgs e)
         {
-         }
-         protected void ddlProject_SelectedIndexChanged(object sender, EventArgs e)
+        }
+        protected void ddlProject_SelectedIndexChanged(object sender, EventArgs e)
         {
-             string projectName = ddlProject.SelectedValue;
+            string projectName = ddlProject.SelectedValue;
             List<string> empName = businesslogic.AddEmp(projectName);
-             ddlEmployee.DataSource = empName;
+            ddlEmployee.DataSource = empName;
             ddlEmployee.DataBind();
-         }
-         protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        }
+        protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-         }
-         protected void btnForwardTask_Click(object sender, EventArgs e)
+
+        }
+
+
+
+
+
+
+        protected void btnForwardTask_Click(object sender, EventArgs e)
         {
             businessobjects bobj = new businessobjects();
             bobj.projectname = ddlProject.SelectedValue;
@@ -207,10 +256,37 @@ using System.Collections.Generic;
             bobj.Date = txtTaskStartDate.Text;
             bobj.deadlineDate = txtTaskEndDate.Text;
             bobj.taskDescription = txtTaskDescription.Text;
-            bobj.EmpId = Convert.ToInt32(ddlEmployee.SelectedValue);
+            string input = ddlEmployee.SelectedValue;
+            Match match = Regex.Match(input, @"\d+");
+            string integerValue = match.Value;
+            int intValue = int.Parse(integerValue);
+            bobj.EmpId = intValue;
             bobj.comments = txtComments.Text;
+            if (fileUpload.HasFile)
+            {
+                string fileName = Path.GetFileName(fileUpload.FileName);
+                string virtualFolderPath = "~/Uploaded/";
+                string virtualFilePath = Path.Combine(virtualFolderPath, fileName);
+                string physicalFilePath = Server.MapPath(virtualFilePath);
+                fileUpload.SaveAs(physicalFilePath);
+                bobj.filepath = virtualFilePath;
+            }
             businesslogic blogic = new businesslogic();
             blogic.forwardTask(bobj);
-         }
+            bobj.projectname = null;
+            bobj.taskname = null;
+            bobj.TaskPriority = null;
+            bobj.Date = null;
+            bobj.deadlineDate = null;
+            bobj.taskDescription = null;
+            bobj.EmpId = 0;
+            bobj.comments = null;
+            bobj.filepath = null;
+            Response.Redirect("Admin.aspx");
+
+        }
     }
 }
+
+
+

@@ -6,11 +6,15 @@
 //     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
- namespace TaskManagement
+
+namespace TaskManagement
 {
-     public partial class UserUI
+
+
+    public partial class UserUI
     {
-         /// <summary>
+
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -18,7 +22,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-         /// <summary>
+
+        /// <summary>
         /// lblUserName control.
         /// </summary>
         /// <remarks>
@@ -26,7 +31,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUserName;
-         /// <summary>
+
+        /// <summary>
         /// HyperLink1 control.
         /// </summary>
         /// <remarks>
@@ -34,7 +40,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-         /// <summary>
+
+        /// <summary>
         /// CreateTaskLink control.
         /// </summary>
         /// <remarks>
@@ -42,7 +49,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink CreateTaskLink;
-         /// <summary>
+
+        /// <summary>
         /// DeleteTaskLink control.
         /// </summary>
         /// <remarks>
@@ -50,7 +58,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink DeleteTaskLink;
-         /// <summary>
+
+        /// <summary>
         /// CreateProjectLink control.
         /// </summary>
         /// <remarks>
@@ -58,7 +67,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink CreateProjectLink;
-         /// <summary>
+
+        /// <summary>
         /// DeleteProjectLink control.
         /// </summary>
         /// <remarks>
@@ -66,7 +76,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink DeleteProjectLink;
-         /// <summary>
+
+        /// <summary>
         /// txtEmployeeID control.
         /// </summary>
         /// <remarks>
@@ -74,7 +85,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmployeeID;
-         /// <summary>
+
+        /// <summary>
         /// btnFetchTasks control.
         /// </summary>
         /// <remarks>
@@ -82,7 +94,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFetchTasks;
-         /// <summary>
+
+        /// <summary>
         /// rptProjects control.
         /// </summary>
         /// <remarks>
@@ -90,7 +103,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptProjects;
-         /// <summary>
+
+        /// <summary>
         /// rptIndividualTasks control.
         /// </summary>
         /// <remarks>
@@ -98,7 +112,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptIndividualTasks;
-         /// <summary>
+
+        /// <summary>
         /// lblWarningMessage control.
         /// </summary>
         /// <remarks>
@@ -106,7 +121,17 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblWarningMessage;
-         /// <summary>
+
+        /// <summary>
+        /// rptForwardedTasks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptForwardedTasks;
+
+        /// <summary>
         /// ddlProject control.
         /// </summary>
         /// <remarks>
@@ -114,7 +139,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProject;
-         /// <summary>
+
+        /// <summary>
         /// chkAddTask control.
         /// </summary>
         /// <remarks>
@@ -122,7 +148,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAddTask;
-         /// <summary>
+
+        /// <summary>
         /// txtTaskName control.
         /// </summary>
         /// <remarks>
@@ -130,7 +157,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTaskName;
-         /// <summary>
+
+        /// <summary>
         /// ddlTaskPriority control.
         /// </summary>
         /// <remarks>
@@ -138,7 +166,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTaskPriority;
-         /// <summary>
+
+        /// <summary>
         /// txtTaskStartDate control.
         /// </summary>
         /// <remarks>
@@ -146,7 +175,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTaskStartDate;
-         /// <summary>
+
+        /// <summary>
         /// txtTaskEndDate control.
         /// </summary>
         /// <remarks>
@@ -154,7 +184,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTaskEndDate;
-         /// <summary>
+
+        /// <summary>
         /// txtTaskDescription control.
         /// </summary>
         /// <remarks>
@@ -162,7 +193,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTaskDescription;
-         /// <summary>
+
+        /// <summary>
         /// ddlEmployee control.
         /// </summary>
         /// <remarks>
@@ -170,7 +202,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmployee;
-         /// <summary>
+
+        /// <summary>
         /// lblComments control.
         /// </summary>
         /// <remarks>
@@ -178,7 +211,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblComments;
-         /// <summary>
+
+        /// <summary>
         /// txtComments control.
         /// </summary>
         /// <remarks>
@@ -186,7 +220,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtComments;
-         /// <summary>
+
+        /// <summary>
         /// fileUpload control.
         /// </summary>
         /// <remarks>
@@ -194,7 +229,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload fileUpload;
-         /// <summary>
+
+        /// <summary>
         /// btnForwardTask control.
         /// </summary>
         /// <remarks>
@@ -202,7 +238,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnForwardTask;
-         /// <summary>
+
+        /// <summary>
         /// lblProjectName control.
         /// </summary>
         /// <remarks>
@@ -210,7 +247,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblProjectName;
-         /// <summary>
+
+        /// <summary>
         /// btnForward control.
         /// </summary>
         /// <remarks>
@@ -218,7 +256,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnForward;
-         /// <summary>
+
+        /// <summary>
         /// btnAttachment control.
         /// </summary>
         /// <remarks>
