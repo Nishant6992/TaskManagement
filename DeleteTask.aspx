@@ -42,7 +42,7 @@
             <hr />
              <div class="form-group">
                 <label for="ddlTasks">Select Task:</label>
-                <asp:DropDownList ID="ddlTasks" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="ddlTasks" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlTasks_SelectedIndexChanged">
                     <asp:ListItem Text="--Select--" Value="" />
                  </asp:DropDownList>
             </div>

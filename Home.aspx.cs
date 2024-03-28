@@ -19,5 +19,10 @@ using System.Web.UI.WebControls;
         {
             Response.Redirect("Index.aspx");
         }
+
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

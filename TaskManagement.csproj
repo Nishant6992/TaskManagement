@@ -178,6 +178,7 @@
     <Content Include="TaskList.aspx" />
     <Content Include="Admin.aspx" />
     <Content Include="try.aspx" />
+    <Content Include="UserUIRecent.aspx" />
     <Content Include="Web.config" />
     <Content Include="wecome.aspx" />
   </ItemGroup>
@@ -280,6 +281,13 @@
     </Compile>
     <Compile Include="try.aspx.designer.cs">
       <DependentUpon>try.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserUIRecent.aspx.cs">
+      <DependentUpon>UserUIRecent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserUIRecent.aspx.designer.cs">
+      <DependentUpon>UserUIRecent.aspx</DependentUpon>
     </Compile>
     <Compile Include="wecome.aspx.cs">
       <DependentUpon>wecome.aspx</DependentUpon>
