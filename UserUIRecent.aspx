@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserUIRecent.aspx.cs" Inherits="TaskManagement.UserUIRecent" %>
 
-
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -73,8 +71,44 @@
                 </ItemTemplate>
             </asp:Repeater>
         </div>
+
+
+        <!-- Modal for Forwarding Task -->
+        <div class="modal fade" id="forwardTaskModal" tabindex="-1" role="dialog" aria-labelledby="forwardTaskModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="forwardTaskModalLabel">Forward Task</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Select an employee to forward the task:</p>
+                        <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="form-control">
+                        </asp:DropDownList>
+                    </div>
+                    <div class ="modal-body">
+                        <p>Enter the Task Name</p>
+                        <asp:TextBox ID="txttaskname" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                     <div class ="modal-body">
+                        <p>Enter Task Comments</p>
+                        <asp:TextBox ID="txtcomment" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+
+                    <div class="modal-footer">
+                        <asp:Button ID="Forward" runat="server" Text="Forward Task" CssClass="btn btn-primary" OnClick="Forward_Click" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <asp:HiddenField ID="hidTaskID" runat="server" />
+
     </form>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

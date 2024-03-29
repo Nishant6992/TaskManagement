@@ -59,7 +59,7 @@
             <hr />
              <div class="form-group">
                 <label for="ddlTasks">Select Project:</label>
-                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
+                <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control">
                     <asp:ListItem Text="--Select--" Value="" />
                  </asp:DropDownList>
             </div>
@@ -67,7 +67,7 @@
                 <!-- Task details will be displayed here -->
             </div>
              <div class="form-group mt-3">
-                <asp:Button ID="Button1" runat="server" Text="Delete" CssClass="btn btn-danger mr-2" OnClick="btnDelete_Click" />
+                <asp:Button ID="btnDeleteProject" runat="server" Text="Delete" CssClass="btn btn-danger mr-2" OnClick="btnDeleteProject_Click" />
                 <asp:Button ID="Button2" runat="server" Text="Cancel" CssClass="btn btn-secondary" OnClick="btnCancel_Click" />
             </div>
         </div>

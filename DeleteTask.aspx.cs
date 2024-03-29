@@ -19,10 +19,10 @@ namespace TaskManagement
 
         private void PopulateProject()
         {
-            
+
             List<string> projects = businesslogic.Add();
-            DropDownList1.DataSource = projects;
-            DropDownList1.DataBind();
+            ddlProject.DataSource = projects;
+            ddlProject.DataBind();
         }
 
         private void PopulateTask()
@@ -34,7 +34,11 @@ namespace TaskManagement
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-           
+            string val = ddlTasks.SelectedValue;
+            businesslogic blogic = new businesslogic();
+            blogic.deletetask(val);
+            ddlTasks.SelectedValue = null;
+
         }
         protected void btnCancel_Click(object sender, EventArgs e)
         {
@@ -42,6 +46,15 @@ namespace TaskManagement
 
         protected void ddlTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        protected void btnDeleteProject_Click(object sender, EventArgs e)
+        {
+            int val = ddlProject.SelectedIndex;
+            businesslogic blogic = new businesslogic();
+            blogic.deleteProject(val);
+            ddlProject.SelectedValue = null;
 
         }
     }

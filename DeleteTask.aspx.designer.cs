@@ -6,11 +6,15 @@
 //     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
- namespace TaskManagement
+
+namespace TaskManagement
 {
-     public partial class DeleteTask
+
+
+    public partial class DeleteTask
     {
-         /// <summary>
+
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -18,7 +22,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-         /// <summary>
+
+        /// <summary>
         /// ddlTasks control.
         /// </summary>
         /// <remarks>
@@ -26,7 +31,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTasks;
-         /// <summary>
+
+        /// <summary>
         /// btnDelete control.
         /// </summary>
         /// <remarks>
@@ -34,7 +40,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
-         /// <summary>
+
+        /// <summary>
         /// btnCancel control.
         /// </summary>
         /// <remarks>
@@ -42,23 +49,26 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
-         /// <summary>
-        /// DropDownList1 control.
+
+        /// <summary>
+        /// ddlProject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-         /// <summary>
-        /// Button1 control.
+        protected global::System.Web.UI.WebControls.DropDownList ddlProject;
+
+        /// <summary>
+        /// btnDeleteProject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-         /// <summary>
+        protected global::System.Web.UI.WebControls.Button btnDeleteProject;
+
+        /// <summary>
         /// Button2 control.
         /// </summary>
         /// <remarks>
