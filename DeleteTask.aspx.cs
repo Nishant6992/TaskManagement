@@ -13,8 +13,13 @@ namespace TaskManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            PopulateTask();
-            PopulateProject();
+            if (!Page.IsPostBack)
+            {
+                PopulateTask();
+                PopulateProject();
+            }
+
+
         }
 
         private void PopulateProject()
@@ -34,6 +39,7 @@ namespace TaskManagement
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+
             string val = ddlTasks.SelectedValue;
             businesslogic blogic = new businesslogic();
             blogic.deletetask(val);
@@ -46,6 +52,7 @@ namespace TaskManagement
 
         protected void ddlTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
+
 
         }
 
