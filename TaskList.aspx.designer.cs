@@ -6,11 +6,15 @@
 //     the code is regenerated. 
 // </auto-generated>
 //------------------------------------------------------------------------------
- namespace TaskManagement
+
+namespace TaskManagement
 {
-     public partial class TaskList
+
+
+    public partial class TaskList
     {
-         /// <summary>
+
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -18,7 +22,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-         /// <summary>
+
+        /// <summary>
         /// rptTasks control.
         /// </summary>
         /// <remarks>
@@ -26,7 +31,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptTasks;
-         /// <summary>
+
+        /// <summary>
         /// txttaskid control.
         /// </summary>
         /// <remarks>
@@ -34,7 +40,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txttaskid;
-         /// <summary>
+
+        /// <summary>
         /// txtempid control.
         /// </summary>
         /// <remarks>
@@ -42,7 +49,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtempid;
-         /// <summary>
+
+        /// <summary>
         /// txtstartdate control.
         /// </summary>
         /// <remarks>
@@ -50,7 +58,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtstartdate;
-         /// <summary>
+
+        /// <summary>
         /// txtdeadlinedate control.
         /// </summary>
         /// <remarks>
@@ -58,7 +67,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdeadlinedate;
-         /// <summary>
+
+        /// <summary>
         /// txtprior control.
         /// </summary>
         /// <remarks>
@@ -66,7 +76,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtprior;
-         /// <summary>
+
+        /// <summary>
         /// txtdecsp control.
         /// </summary>
         /// <remarks>
@@ -74,7 +85,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdecsp;
-         /// <summary>
+
+        /// <summary>
         /// txtprojectid control.
         /// </summary>
         /// <remarks>
@@ -82,7 +94,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtprojectid;
-         /// <summary>
+
+        /// <summary>
         /// txtprojname control.
         /// </summary>
         /// <remarks>
@@ -90,7 +103,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtprojname;
-         /// <summary>
+
+        /// <summary>
         /// txtcomment control.
         /// </summary>
         /// <remarks>
@@ -98,7 +112,8 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcomment;
-         /// <summary>
+
+        /// <summary>
         /// comment control.
         /// </summary>
         /// <remarks>
@@ -106,5 +121,14 @@
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button comment;
+
+        /// <summary>
+        /// btndwnld control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btndwnld;
     }
 }

@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TaskList.aspx.cs" Inherits="TaskManagement.TaskList" %>
- <!DOCTYPE html>
- <html xmlns="http://www.w3.org/1999/xhtml">
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Task List</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -11,7 +12,8 @@
             padding: 15px;
             margin-bottom: 20px;
         }
-         .task-buttons {
+
+        .task-buttons {
             text-align: right;
         }
     </style>
@@ -21,7 +23,7 @@
         <div class="container">
             <h2>Task List</h2>
             <hr />
-             <div class="row">
+            <div class="row">
                 <asp:Repeater ID="rptTasks" runat="server">
                     <ItemTemplate>
                         <div class="col-md-4">
@@ -54,14 +56,14 @@
                                     <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary btn-sm" CommandName="Edit" CommandArgument='<%# Eval("TaskID") %>' OnClick="btnEdit_Click" />
                                     <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger btn-sm" CommandName="Delete" CommandArgument='<%# Eval("TaskID") %>' OnClick="btnDelete_Click" />
                                     <asp:Button ID="btnComment" runat="server" Text="Comment" CssClass="btn btn-info btn-sm" CommandName="Comment" CommandArgument='<%#Eval("TaskID") + ";" +Eval("EmployeeID") + ";" +  Eval("Start_Date", "{0:d}") + ";" + Eval("Deadline_Date", "{0:d}")+ ";" + Eval("Task_priority")+ ";" + Eval("Task_Descp") + ";" + Eval("Project_id") + ";" + Eval("projectname") %>' OnClientClick="openForwardTaskModal(); return true;" OnClick="btnComment_Click" />
-                                 </div>
+                                </div>
                             </div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
         </div>
-         <div class="modal fade" id="commentTaskModel" tabindex="-1" aria-labelledby="commentTaskModel" aria-hidden="true">
+        <div class="modal fade" id="commentTaskModel" tabindex="-1" aria-labelledby="commentTaskModel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -107,21 +109,61 @@
                         <div class="modal-footer">
                             <asp:Button OnClick="comment_Click" Text="Comment" ID="comment" CssClass="btn btn-success" runat="server" />
                             <asp:Button runat="server" class="btn btn-secondary" data-dismiss="modal" Text="Close"></asp:Button>
+                            <asp:Button runat="server" CssClass="btn btn-dark" ID="btndwnld" Text="Download Report" OnClientClick="getPDF();" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </form>
+
+
     <script>
         function openForwardTaskModal() {
             // Open the modal
             $('#commentTaskModel').modal('show');
         }
     </script>
-    t>
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+
+
+    <script>
+        function getPDF() {
+            debugger;
+            var HTML_Width = $(".hello").width();
+            var HTML_Height = $(".hello").height();
+            var top_left_margin = 15;
+            var PDF_Width = HTML_Width + (top_left_margin * 2);
+            var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+            var canvas_image_width = HTML_Width;
+            var canvas_image_height = HTML_Height;
+
+            var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+
+            html2canvas($(".hello")[0], { allowTaint: true }).then(function (canvas) {
+                console.log(canvas.height + "  " + canvas.width);
+
+                var imgData = canvas.toDataURL("image/jpeg", 1.0);
+                var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+                pdf.addImage(imgData, 'JPEG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+
+                for (var i = 1; i <= totalPDFPages; i++) {
+                    pdf.addPage(PDF_Width, PDF_Height);
+                    pdf.addImage(imgData, 'JPEG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+                }
+
+                pdf.save("HTML-Document.pdf");
+
+
+            });
+        };
+    </script>
 </body>
 </html>
